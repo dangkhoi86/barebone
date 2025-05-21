@@ -2,8 +2,7 @@ name: Barebone Crawler
 
 on:
   schedule:
-    # Chạy mỗi ngày lúc 8:00 UTC (15:00 VN)
-    - cron: '*/10 * * * *'
+    - cron: '*/60 * * * *'
   workflow_dispatch:  # Cho phép chạy thủ công
 
 jobs:
@@ -30,8 +29,8 @@ jobs:
     - name: Run 5giay crawler
       run: python barebone5giay.py
       
-    # - name: Run VTMK crawler
-    #  run: python barebone5giayvtmk.py
+    - name: Run VTMK crawler
+      run: python barebone5giayvtmk.py
       
-    #- name: Run MKCOM crawler
-    #  run: python barebone5giaymkcom.py
+    - name: Run MKCOM crawler
+      run: python barebone5giaymkcom.py
