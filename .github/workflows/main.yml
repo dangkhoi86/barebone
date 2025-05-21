@@ -1,0 +1,37 @@
+name: Barebone Crawler
+
+on:
+  schedule:
+    # Chạy mỗi ngày lúc 8:00 UTC (15:00 VN)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:  # Cho phép chạy thủ công
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 pandas gspread oauth2client gspread-formatting tenacity
+        
+    - name: Create credentials file
+      run: |
+        echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+        
+    - name: Run 5giay crawler
+      run: python barebone/barebone5giay.py
+      
+    # - name: Run VTMK crawler
+    #  run: python barebone/barebone5giayvtmk.py
+      
+    #- name: Run MKCOM crawler
+    #  run: python barebone/barebone5giaymkcom.py
