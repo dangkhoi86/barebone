@@ -10,8 +10,6 @@ import json
 import urllib.parse
 from gspread_formatting import format_cell_range, CellFormat, TextFormat, set_column_width, Color, Padding
 from tenacity import retry, stop_after_attempt, wait_exponential
-import asyncio
-import aiohttp
 from concurrent.futures import ThreadPoolExecutor
 
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1N-aHLsVYKt9H_7xc4thFb1Ey6h2Mj7F93Ett_uEEMZQ/edit#gid=0"
@@ -66,15 +64,14 @@ def get_barebone_info(url, page):
         if table:
             rows = table.find_all('tr')
             for row in rows[1:]:  # bỏ header
-                # Kiểm tra nếu tr có thuộc tính hidden thì bỏ qua
-                if row.has_attr('hidden'):
-                    continue
-                    
                 tds = row.find_all('td')
                 if len(tds) > 1:
                     name = tds[0].text.strip()
                     # Xóa thông tin trong dấu ngoặc đơn
                     name = re.sub(r'\([^)]*\)', '', name).strip()
+                    # Thêm "[Đang Ẩn]" nếu tr có thuộc tính hidden
+                    if row.has_attr('hidden'):
+                        name = f"{name} [Đang Ẩn]"
                     # Chỉ lấy dòng có chữ 'barebone' (không phân biệt hoa thường)
                     if 'barebone' not in name.lower():
                         continue
