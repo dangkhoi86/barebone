@@ -2,7 +2,7 @@ name: Barebone Crawler
 
 on:
   schedule:
-    - cron: '*/60 * * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:  # Cho phép chạy thủ công
 
 jobs:
@@ -27,4 +27,6 @@ jobs:
         echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
         
     - name: Run all barebobe
+      env:
+          SITE_URL: ${{ secrets.SITE_URL }}
       run: python runallbarebone.py
