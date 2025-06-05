@@ -10,8 +10,9 @@ import json
 import urllib.parse
 from gspread_formatting import format_cell_range, CellFormat, TextFormat, set_column_width, Color, Padding
 from tenacity import retry, stop_after_attempt, wait_exponential
+import os
+SHEET_URL = os.environ.get("SHEET_URL")
 
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1N-aHLsVYKt9H_7xc4thFb1Ey6h2Mj7F93Ett_uEEMZQ/edit#gid=0"
 SHEET_5GIAY_URL = SHEET_URL  # Dùng cùng 1 link Google Sheet
 today_str = datetime.now().strftime("%d-%m-%Y")
 compare_sheet_name = f"Check-Gia-MKCOM-{today_str}"
