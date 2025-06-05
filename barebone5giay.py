@@ -287,7 +287,10 @@ def write_to_sheet(products):
     
     # Tạo tên sheet theo ngày crawl
     today = datetime.now().strftime("%d-%m-%Y")
-    sh = os.environ.get("SHEET_URL")
+    sheet_url = os.environ.get("SHEET_URL")
+    if not sheet_url:
+        raise Exception("Biến môi trường SHEET_URL chưa được thiết lập!")
+    sh = client.open_by_url(sheet_url)
     
     # Kiểm tra sheet đã tồn tại chưa
     try:
