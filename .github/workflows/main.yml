@@ -29,4 +29,4 @@ jobs:
     - name: Run all barebobe
       env:
           SITE_URL: ${{ secrets.SITE_URL }}
-      run: python runallbarebone.py
+      run: python barebone5giay.py
