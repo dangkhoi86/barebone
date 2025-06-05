@@ -2,6 +2,7 @@ import subprocess
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
+import os
 
 print("Running barebone5giay.py...")
 subprocess.run(["python", "barebone5giay.py"], check=True)
@@ -14,7 +15,7 @@ subprocess.run(["python", "barebone5giaymkcom.py"], check=True)
 
 print("Crawlers finished. Cleaning up old sheets...")
 
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1N-aHLsVYKt9H_7xc4thFb1Ey6h2Mj7F93Ett_uEEMZQ/edit#gid=0"
+SHEET_URL = os.environ.get("SHEET_URL")
 today_str = datetime.now().strftime("%d-%m-%Y")
 
 scope = [
