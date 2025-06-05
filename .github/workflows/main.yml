@@ -28,5 +28,5 @@ jobs:
         
     - name: Run all barebobe
       env:
-          SITE_URL: ${{ secrets.SITE_URL }}
+          SHEET_URL: ${{ secrets.SHEET_URL }}
       run: python runallbarebone.py
