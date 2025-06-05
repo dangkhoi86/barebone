@@ -7,6 +7,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from gspread_formatting import format_cell_range, CellFormat, TextFormat, set_column_width, Color, Padding
 import unicodedata
 import time
+import os
 
 def format_price(raw_price):
     if not raw_price:
@@ -286,7 +287,7 @@ def write_to_sheet(products):
     
     # Tạo tên sheet theo ngày crawl
     today = datetime.now().strftime("%d-%m-%Y")
-    sh = client.open_by_url("https://docs.google.com/spreadsheets/d/1N-aHLsVYKt9H_7xc4thFb1Ey6h2Mj7F93Ett_uEEMZQ/edit#gid=0")
+    sh = os.environ.get("SHEET_URL")
     
     # Kiểm tra sheet đã tồn tại chưa
     try:
