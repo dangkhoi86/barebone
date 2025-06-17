@@ -14,7 +14,7 @@ import os
 SHEET_URL = os.environ.get("SHEET_URL")
 WC_API_URL = os.environ.get("MK_WC_API_URL")
 WC_CONSUMER_KEY = os.environ.get("MK_WC_CONSUMER_KEY")
-WC_CONSUMER_SECRET = "os.environ.get("MK_WC_CONSUMER_SECRET")
+WC_CONSUMER_SECRET = os.environ.get("MK_WC_CONSUMER_SECRET")
 SHEET_5GIAY_URL = SHEET_URL
 
 today_str = datetime.now().strftime("%d-%m-%Y")
