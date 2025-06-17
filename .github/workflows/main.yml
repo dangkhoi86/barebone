@@ -29,4 +29,7 @@ jobs:
     - name: Run all barebobe
       env:
           SHEET_URL: ${{ secrets.SHEET_URL }}
+          MK_WC_API_URL: ${{ secrets.MK_WC_API_URL }}
+          MK_WC_CONSUMER_KEY: ${{ secrets.MK_WC_CONSUMER_KEY }}
+          MK_WC_CONSUMER_SECRET: ${{ secrets.MK_WC_CONSUMER_SECRET }}
       run: python runallbarebone.py
