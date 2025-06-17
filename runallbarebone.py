@@ -7,11 +7,11 @@ import os
 # print("Running barebone5giay.py...")
 # subprocess.run(["python", "barebone5giay.py"], check=True)
 
-print("Running barebone5giayvtmk.py...")
-subprocess.run(["python", "barebone5giayvtmk.py"], check=True)
+# print("Running barebone5giayvtmk.py...")
+# subprocess.run(["python", "barebone5giayvtmk.py"], check=True)
 
-# print("Running barebone5giaymkcom.py...")
-# subprocess.run(["python", "barebone5giaymkcom.py"], check=True)
+print("Running barebone5giaymkcom.py...")
+subprocess.run(["python", "barebone5giaymkcom.py"], check=True)
 
 print("Crawlers finished. Cleaning up old sheets...")
 
